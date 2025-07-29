@@ -1,0 +1,41 @@
+
+body {
+    background-color: #f0f5fa;
+    padding-top: 90px;
+}
+.navbar {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1140px;
+    z-index: 1050;
+
+    /* Styling */
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+.navbar .navbar-brand { font-size: 1.5rem; }
+.navbar .nav-link { font-weight: 500; color: #495057; padding: 0.5rem 1rem; }
+.navbar .nav-link:hover { color: #0d6efd; }
+.navbar .nav-link.active { color: #0d6efd !important; font-weight: 700; }
+.navbar .btn { font-weight: 500; }
+
+/* Carousel Styles */
+.carousel-item { height: 75vh; min-height: 500px; background: no-repeat center center scroll; background-size: cover; }
+.carousel-caption { bottom: 3rem; z-index: 10; }
+
+/* Content and Footer */
+.content-section { background-color: white; border-radius: 1rem; }
+.footer { background-color: #343a40; color: white; }
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .navbar { border-radius: 20px; }
+    .navbar-collapse { padding: 1rem; margin-top: 0.5rem; }
+}
