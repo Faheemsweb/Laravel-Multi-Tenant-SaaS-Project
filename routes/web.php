@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OnboardingController;
-use App\Http\Controllers\Landlord\TenantController;
+use App\Http\Controllers\Landlord\landlordController;
 use App\Http\Controllers\Tenant\DashboardController;
 use App\Http\Controllers\Tenant\Auth\LoginController;
 use App\Http\Controllers\welcome\welcome;
@@ -44,16 +44,16 @@ Route::domain(config('app.domain', 'myapp.test'))->group(function () {
 Route::domain('landlord.' . config('app.domain', 'myapp.test'))
     ->group(function () {
         Route::middleware(['auth:landlord'])->group(function () {
-            Route::get('/', [TenantController::class, 'index'])->name('dashboard');
-            Route::post('/tenants/{tenant}/status', [TenantController::class, 'updateStatus'])->name('landlord.tenants.status');
-            Route::delete('/tenants/{tenant}', [TenantController::class, 'destroy'])->name('landlord.tenants.destroy');
-            Route::post('logout', [TenantController::class, 'logout'])->name('logout');
+            Route::get('/', [landlordController::class, 'index'])->name('dashboard');
+            Route::post('/tenants/{tenant}/status', [landlordController::class, 'updateStatus'])->name('landlord.tenants.status');
+            Route::delete('/tenants/{tenant}', [landlordController::class, 'destroy'])->name('landlord.tenants.destroy');
+            Route::post('logout', [landlordController::class, 'logout'])->name('logout');
         });
 
         // Guest landlord routes
         Route::middleware(['guest:landlord'])->group(function () {
-            Route::get('login', [TenantController::class, 'showLoginForm'])->name('login');
-            Route::post('login', [TenantController::class, 'login']);
+            Route::get('login', [landlordController::class, 'showLoginForm'])->name('login');
+            Route::post('login', [landlordController::class, 'login']);
         });
     });
 

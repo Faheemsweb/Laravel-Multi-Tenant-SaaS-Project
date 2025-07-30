@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LandlordLoginRequest;
 use Illuminate\Support\Facades\DB;
 
-class TenantController extends Controller
+class landlordController extends Controller
 {
     public function index()
     {
