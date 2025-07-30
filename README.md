@@ -197,7 +197,9 @@ For the multi-tenancy to work correctly, you'll need to set up a local domain wi
 Edit Your hosts File: Add an entry to point your chosen domain and a wildcard subdomain to your local machine.
 ```html
 127.0.0.1   saas-app.test
+127.0.0.1   landlord.myapp.test
 127.0.0.1   *.saas-app.test
+
 ```
 Configure Your Web Server: Set up a virtual host in your web server (Apache/Nginx) that points the domain (saas-app.test) and its wildcard subdomains (*.saas-app.test) to the project's /public directory.
 
@@ -207,6 +209,18 @@ Almost there! Run these final commands to link your storage and start the queue 
 ```html
 php artisan queue:work
 ```
+## Default Landlord Admin User
+Here are the credentials for the landlord admin user:
+
+Email: contactfaheemali@gmail.com
+Password: faheem@123
+
+## Login URL:
+You can access the login page for the landlord admin at:
+```html
+http://landlord.myapp.test/login
+```
+
 
 Your application should now be running on the local domain you configured! ✅
 
