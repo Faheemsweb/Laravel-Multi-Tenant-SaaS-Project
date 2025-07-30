@@ -32,7 +32,7 @@ Each tenant gets a **completely isolated database**, login system, and dashboard
 
 | Layer          | Technology                                       |
 |----------------|--------------------------------------------------|
-| Backend        | Laravel 12, PHP 8.3                              |
+| Backend        | Laravel 12, PHP 8.2                              |
 | Multitenancy   | Spatie Multitenancy v4 (Isolated DB Mode)        |
 | Frontend       | HTML,CSS and Javascript                          |
 | Styling        | Bootstrap   v5                                   |
