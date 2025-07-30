@@ -137,9 +137,62 @@ DB_PASSWORD: Your database password.
 Run the migrations to set up the necessary database tables. This includes the central "landlord" database and any default tenant migrations.
 # Set up the central landlord tables
 ```html
-php artisan migrate --database=landlord
+php artisan migrate 
 ```
+
+
 ## 5. Local Domain Setup
+ ## Step-by-Step Configuration
+# Locate Your Directories
+    Laravel Project Path: The root directory of your Laravel project (e.g., C:\xampp\htdocs\my_laravel_app).
+## 2. Modify httpd-vhosts.conf
+This file tells Apache about your custom domain.
+Open the file:
+Windows: C:\xampp\apache\conf\extra\httpd-vhosts.conf
+```html
+           <VirtualHost *:80>
+            DocumentRoot "C:/xampp/htdocs/my_laravel_app/public"
+            ServerName my_laravel_app.test
+            <Directory "C:/xampp/htdocs/my_laravel_app/public">
+                AllowOverride All
+                Require all granted
+            </Directory>
+        </VirtualHost>
+```
+Replace my_laravel_app.test with your desired custom URL.
+## 3.Modify Your hosts File
+This file maps your custom domain to your local machine (127.0.0.1).
+
+Open the file:
+
+Windows: C:\Windows\System32\drivers\etc\hosts (You might need to open your text editor as Administrator to save changes).
+Add the mapping: Add the following line to the end of the file
+```html
+    127.0.0.1 my_laravel_app.test
+```
+Make sure my_laravel_app.test matches the ServerName you set in httpd-vhosts.conf.
+## 4.Enable Virtual Hosts in httpd.conf
+This step ensures Apache reads your httpd-vhosts.conf file.
+
+Open the file:
+
+Windows: C:\xampp\apache\conf\httpd.conf
+
+Uncomment the line: Search for the line below and remove the # at the beginning:
+
+```html
+#Include conf/extra/httpd-vhosts.conf
+```
+
+It should look like this after editing:
+```html
+Include conf/extra/httpd-vhosts.conf
+```
+
+## 5. Restart Apache
+
+
+ 
 For the multi-tenancy to work correctly, you'll need to set up a local domain with wildcard subdomains.
 Edit Your hosts File: Add an entry to point your chosen domain and a wildcard subdomain to your local machine.
 ```html
@@ -147,6 +200,7 @@ Edit Your hosts File: Add an entry to point your chosen domain and a wildcard su
 127.0.0.1   *.saas-app.test
 ```
 Configure Your Web Server: Set up a virtual host in your web server (Apache/Nginx) that points the domain (saas-app.test) and its wildcard subdomains (*.saas-app.test) to the project's /public directory.
+
 ## 6. Final Steps
 Almost there! Run these final commands to link your storage and start the queue worker.
 # Run the queue worker to process background jobs
